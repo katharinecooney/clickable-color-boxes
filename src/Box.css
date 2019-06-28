@@ -1,6 +1,4 @@
 .Box {
-  min-width: 200px;
-  height: 200px;
-  display: inline-block;
-  border: 1px solid gray;
+  height: 20em;
+  width: 20em;
 }
