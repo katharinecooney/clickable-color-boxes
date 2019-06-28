@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
+import {choice} from './helpers';
 import './Box.css';
 
 class Box extends Component {
   static defaultProps = {
-    allColors: ['purple', 'lilac', 'magenta', 'cornflowerblue', 'orchid']
+    allColors: ['purple', 'violet', 'magenta', 'cornflowerblue', 'orchid']
   }
 
   constructor(props){
     super(props);
     this.state = {
-      color: 'purple'
+      color: this.props.allColors[Math.floor(Math.random() * this.props.allColors.length)]
     }
   }
 
   handleClick = (e) => {
-    let randomIndex = Math.floor(Math.random() * this.props.allColors.length);
-    let randomColor = this.props.allColors[randomIndex];
-    this.setState({
-      color: randomColor
-    })
+    let newColor;
+
+    do {
+      newColor = choice(this.props.allColors);
+    } while (this.state.color === newColor);
+    
+    this.setState({color: newColor})
   }
 
   render(){
